@@ -89,7 +89,7 @@ else
     # on ppc64le compile from source as the .deb packages are not available
     # from the repo above
     wget http://download.rsyslog.com/liblogging/liblogging-1.0.5.tar.gz
-    wget http://www.rsyslog.com/download/files/download/rsyslog/rsyslog-8.15.0.tar.gz
+    wget https://www.rsyslog.com/download/files/download/rsyslog/rsyslog-8.15.0.tar.gz
     wget http://download.rsyslog.com/librelp/librelp-1.2.9.tar.gz
   "
 

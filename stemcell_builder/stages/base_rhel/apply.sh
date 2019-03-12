@@ -12,7 +12,7 @@ rpm --root $chroot --initdb
 case "${stemcell_operating_system_version}" in
   "7")
     release_package_url="/mnt/rhel/Packages/redhat-release-server-7.0-1.el7.x86_64.rpm"
-    epel_package_url="http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm"
+    epel_package_url="https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm"
     ;;
   *)
     echo "Unknown RHEL version: ${stemcell_operating_system_version}"
