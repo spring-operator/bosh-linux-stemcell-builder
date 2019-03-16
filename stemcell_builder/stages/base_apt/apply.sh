@@ -25,9 +25,9 @@ EOS
 else
 
 cat > $chroot/etc/apt/sources.list <<EOS
-deb http://archive.ubuntu.com/ubuntu $DISTRIB_CODENAME main universe multiverse
-deb http://archive.ubuntu.com/ubuntu $DISTRIB_CODENAME-updates main universe multiverse
-deb http://security.ubuntu.com/ubuntu $DISTRIB_CODENAME-security main universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ $DISTRIB_CODENAME main universe multiverse
+deb http://archive.ubuntu.com/ubuntu/ $DISTRIB_CODENAME-updates main universe multiverse
+deb http://security.ubuntu.com/ubuntu/ $DISTRIB_CODENAME-security main universe multiverse
 EOS
 
 fi
