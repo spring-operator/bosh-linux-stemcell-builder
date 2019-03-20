@@ -102,9 +102,9 @@ describe 'Ubuntu 14.04 OS image', os_image: true do
         it { should contain 'deb http://ports.ubuntu.com/ubuntu-ports/ trusty-security multiverse' }
 
       else
-        it { should contain 'deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse' }
-        it { should contain 'deb http://archive.ubuntu.com/ubuntu trusty-updates main universe multiverse' }
-        it { should contain 'deb http://security.ubuntu.com/ubuntu trusty-security main universe multiverse' }
+        it { should contain 'deb http://archive.ubuntu.com/ubuntu/ trusty main universe multiverse' }
+        it { should contain 'deb http://archive.ubuntu.com/ubuntu/ trusty-updates main universe multiverse' }
+        it { should contain 'deb http://security.ubuntu.com/ubuntu/ trusty-security main universe multiverse' }
       end
     end
 

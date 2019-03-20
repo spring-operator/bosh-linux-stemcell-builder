@@ -10,7 +10,7 @@ module Bosh::Dev
 
       before(:each) { FileUtils.mkdir('/tmp') }
 
-      let(:string_uri) { 'http://a.sample.uri/requesting/a/test.yml' }
+      let(:string_uri) { 'https://a.sample.uri/requesting/a/test.yml' }
       let(:uri) { URI(string_uri) }
       let(:write_path) { '/tmp/test.yml' }
       let(:content) { 'content' }
@@ -52,7 +52,7 @@ module Bosh::Dev
 
         context 'when the response is a redirect' do
           before do
-            redirected_uri = 'http://otherdomin.uri/requesting/a/test.yml'
+            redirected_uri = 'https://otherdomin.uri/requesting/a/test.yml'
             stub_request(:get, string_uri).to_return(:status => 301, :headers => { 'Location' => redirected_uri })
             stub_request(:get, redirected_uri).to_return(:body => content)
           end
@@ -64,7 +64,7 @@ module Bosh::Dev
 
           context 'and the redirect is an infinite loop' do
             before do
-              redirected_uri = 'http://otherdomin.uri/requesting/a/test.yml'
+              redirected_uri = 'https://otherdomin.uri/requesting/a/test.yml'
               stub_request(:get, string_uri).to_return(:status => 301, :headers => { 'Location' => redirected_uri })
               stub_request(:get, redirected_uri).to_return(:status => 301, :headers => { 'Location' => string_uri })
             end
@@ -72,7 +72,7 @@ module Bosh::Dev
             it 'eventually terminates and returns an error' do
               expect {
                 subject.download(uri, write_path)
-              }.to raise_error(%r{infinite redirect loop while downloading 'http://a.sample.uri/requesting/a/test.yml'})
+              }.to raise_error(%r{infinite redirect loop while downloading 'https://a.sample.uri/requesting/a/test.yml'})
             end
           end
         end
@@ -141,7 +141,7 @@ module Bosh::Dev
         it 'raises an error' do
           expect {
             subject.download(uri, write_path)
-          }.to raise_error(%r{error 500 Internal Server Error while downloading 'http://a.sample.uri/requesting/a/test.yml'})
+          }.to raise_error(%r{error 500 Internal Server Error while downloading 'https://a.sample.uri/requesting/a/test.yml'})
         end
 
         context 'and the response has a body' do
@@ -150,7 +150,7 @@ module Bosh::Dev
           it 'raises an error containing the body' do
             expect {
               subject.download(uri, write_path)
-            }.to raise_error(%r{error 400 Bad Request while downloading 'http://a.sample.uri/requesting/a/test.yml': Missing param foo})
+            }.to raise_error(%r{error 400 Bad Request while downloading 'https://a.sample.uri/requesting/a/test.yml': Missing param foo})
           end
         end
       end
@@ -168,7 +168,7 @@ module Bosh::Dev
       end
 
       context 'when a proxy is available' do
-        before { stub_const('ENV', 'http_proxy' => 'http://proxy.example.com:1234') }
+        before { stub_const('ENV', 'http_proxy' => 'https://proxy.example.com:1234') }
 
         it 'uses the proxy' do
           net_http_mock = class_double('Net::HTTP').as_stubbed_const
@@ -179,7 +179,7 @@ module Bosh::Dev
       end
 
       context 'when a proxy is available and contains the user and password' do
-        before { stub_const('ENV', 'http_proxy' => 'http://user:password@proxy.example.com:1234') }
+        before { stub_const('ENV', 'http_proxy' => 'https://user:password@proxy.example.com:1234') }
 
         it 'uses the proxy' do
           net_http_mock = class_double('Net::HTTP').as_stubbed_const
@@ -190,7 +190,7 @@ module Bosh::Dev
       end
 
       context 'when some uris are specified to bypass the proxy' do
-        before { stub_const('ENV', 'http_proxy' => 'http://proxy.example.com:1234', 'no_proxy' => bypass_proxy_uris)}
+        before { stub_const('ENV', 'http_proxy' => 'https://proxy.example.com:1234', 'no_proxy' => bypass_proxy_uris)}
 
         context 'when the URL does not match the bypass_proxy_uris list' do
           let(:bypass_proxy_uris) { 'does.not.match,at.all' }

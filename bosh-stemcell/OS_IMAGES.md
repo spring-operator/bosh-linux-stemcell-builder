@@ -1,7 +1,7 @@
 
 # OS Image Changes
 
-OS images are stored in S3 bucket [bosh-os-images](http://s3.amazonaws.com/bosh-os-images/).
+OS images are stored in S3 bucket [bosh-os-images](https://s3.amazonaws.com/bosh-os-images/).
 
 
 ## Ubuntu 14.04

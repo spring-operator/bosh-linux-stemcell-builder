@@ -31,7 +31,7 @@ Improvements:
     - `ginkgo build <path-to-package>` will now compile the package, producing a file named `package.test`
     - The compiled `package.test` file can be run directly.  This runs the tests in series.
     - To run precompiled tests in parallel, you can run: `ginkgo -p package.test`
-- Support `bootstrap`ping and `generate`ing [Agouti](http://agouti.org) specs.
+- Support `bootstrap`ping and `generate`ing [Agouti](https://agouti.org) specs.
 - `ginkgo generate` and `ginkgo bootstrap` now honor the package name already defined in a given directory
 - The `ginkgo` CLI ignores `SIGQUIT`.  Prevents its stack dump from interlacing with the underlying test suite's stack dump.
 - The `ginkgo` CLI now compiles tests into a temporary directory instead of the package directory.  This necessitates upgrading to Go v1.4+.
